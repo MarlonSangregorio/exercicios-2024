@@ -1,4 +1,11 @@
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const ChuvaDart());
@@ -13,7 +20,6 @@ class ChuvaDart extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: const Calendar(),
@@ -42,38 +48,138 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Chuva ❤️ Flutter'),
+        backgroundColor: const Color.fromARGB(255, 69, 97, 135),
+        title: const Text(
+          'Chuva 💜 Flutter',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+            fontSize: 25,
+          ),
+        ),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'Programação',
-            ),
-            const Text(
-              'Nov',
-            ),
-            const Text(
-              '2023',
-            ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 26));
-              },
+            Container(
+              color: Color.fromARGB(255, 69, 97, 135),
+              alignment: Alignment.topCenter,
               child: Text(
-                '26',
-                style: Theme.of(context).textTheme.headlineMedium,
+                'Programação',
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 28));
-              },
-              child: Text(
-                '28',
-                style: Theme.of(context).textTheme.headlineMedium,
+            Container(
+              height: 60,
+              color: Color.fromARGB(255, 69, 97, 135),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.calendar_month,
+                        color: Colors.black,
+                      ),
+                      label: Text(
+                        'Exibindo todas atividades',
+                        style: (TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w400)),
+                      ),
+                    ),
+                  ]),
+            ),
+            Container(
+              color: Color.fromARGB(255, 48, 109, 195),
+              child: Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 60,
+                    color: Colors.white,
+                    child: const Text(
+                      'Nov\n2023',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        OutlinedButton(
+                            style: TextButton.styleFrom(
+                                side: BorderSide(
+                                    color: Color.fromARGB(255, 48, 109, 195))),
+                            onPressed: () {
+                              _changeDate(DateTime(2023, 11, 26));
+                            },
+                            child: Text(
+                              '26',
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.white60),
+                            )),
+                        OutlinedButton(
+                          style: TextButton.styleFrom(
+                              side: BorderSide(
+                                  color: Color.fromARGB(255, 48, 109, 195))),
+                          onPressed: () {
+                            _changeDate(DateTime(2023, 11, 27));
+                          },
+                          child: Text(
+                            '27',
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white60),
+                          ),
+                        ),
+                        OutlinedButton(
+                          style: TextButton.styleFrom(
+                              side: BorderSide(
+                                  color: Color.fromARGB(255, 48, 109, 195))),
+                          onPressed: () {
+                            _changeDate(DateTime(2023, 11, 28));
+                          },
+                          child: Text(
+                            '28',
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white60),
+                          ),
+                        ),
+                        OutlinedButton(
+                          style: TextButton.styleFrom(
+                              side: BorderSide(
+                                  color: Color.fromARGB(255, 48, 109, 195))),
+                          onPressed: () {
+                            _changeDate(DateTime(2023, 11, 29));
+                          },
+                          child: Text(
+                            '29',
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white60),
+                          ),
+                        ),
+                        OutlinedButton(
+                          style: TextButton.styleFrom(
+                              side: BorderSide(
+                                  color: Color.fromARGB(255, 48, 109, 195))),
+                          onPressed: () {
+                            _changeDate(DateTime(
+                              2023,
+                              11,
+                            ));
+                          },
+                          child: Text(
+                            '30',
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white60),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
             if (_currentDate.day == 26)
